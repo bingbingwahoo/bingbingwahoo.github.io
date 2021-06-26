@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html data-selected="none">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Human-based sorting algorithm">
+  <meta name="keywords" content="human,sort,comparison,algorithm">
+  <meta name="author" content="Anonymous">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>&nbsp;</title>
+  <link rel="shortcut icon" href="images/blank.gif" id="shortcut-icon">
+  <link rel="stylesheet" href="style.css">
+  <script src="timsort.js"></script>
+  <script src="script.js" data-config='{"dataUrl": "mk8d/data.json", "compactResults": false}'></script>
+</head>
+<body>
+
+<div class="background" id="background" hidden></div>
+
+<div class="main-content">
+
+  <div class="sub-content intro-content" id="intro-content" hidden>
+    <div class="intro-header header">
+      <div class="header-icon" id="main-icon"></div>
+      <div class="header-info">
+        <h1 class="header-title" id="main-title"></h1>
+        <h3 class="header-sub-title" id="main-sub-title"></h3>
+      </div>
+    </div>
+    <div class="intro-body">
+      <div class="intro-preview-container">
+        <div class="intro-preview-container-inner"></div>
+      </div>
+      <div class="intro-button-container">
+        <button class="primary-button" id="begin-button">
+          <span class="primary-button-background"></span>
+          <span class="primary-button-inner">
+            <span class="primary-button-text">
+              Begin
+            </span>
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-content compare-content" id="compare-content" hidden>
+    <div class="compare-option-container">
+      <button class="compare-option compare-option-first" id="compare-option-first">
+        <div class="compare-option-background"></div>
+        <div class="compare-option-overlay"></div>
+        <div class="compare-option-body">
+          <div class="compare-option-header header header-light">
+            <div class="header-icon"></div>
+            <div class="header-info">
+              <h1 class="header-title"></h1>
+              <h3 class="header-sub-title"></h3>
+            </div>
+          </div>
+          <div class="compare-option-content">
+            <div class="compare-option-checkmark-container">
+              <div class="compare-option-checkmark"></div>
+            </div>
+          </div>
+        </div>
+      </button>
+    </div>
+    <div class="compare-option-equal-container">
+      <div class="compare-option-equal-container-inner">
+        <button class="compare-option-equal" id="compare-option-equal">
+          <span class="compare-option-equal-background"></span>
+          <span class="compare-option-equal-symbol">=</span>
+        </button>
+      </div>
+    </div>
+    <div class="compare-option-container">
+      <button class="compare-option compare-option-second" id="compare-option-second">
+        <div class="compare-option-background"></div>
+        <div class="compare-option-overlay"></div>
+        <div class="compare-option-body">
+          <div class="compare-option-header header header-light">
+            <div class="header-icon"></div>
+            <div class="header-info">
+              <h1 class="header-title"></h1>
+              <h3 class="header-sub-title"></h3>
+            </div>
+          </div>
+          <div class="compare-option-content">
+            <div class="compare-option-checkmark-container">
+              <div class="compare-option-checkmark"></div>
+            </div>
+          </div>
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <div class="sub-content results-content" id="results-content" hidden>
+    <div class="results-content-before"></div>
+    <div class="results-body">
+      <div class="results-list" id="results-list"></div>
+      <div>
+        <label class="toggle-link">
+          <label class="hiding-checkbox"><input type="checkbox" id="results-compact" hidden><span></span></label><span>Compact list</span>
+        </label>
+      </div>
+    </div>
+    <div class="results-content-after"></div>
+  </div>
+
+  <div class="footer" id="footer" hidden>
+    <div class="footer-body">
+      <span id="sorting-info"></span>
+      <span class="footer-links">
+        <span class="footer-link-separator"> | </span><a href="" class="navigation-link" id="back-link">Back</a><span class="footer-link-separator"> | </span><a href="" class="navigation-link" id="restart-link">Restart</a><span class="footer-link-separator"> | </span><a href="" class="navigation-link" id="home-link">Home</a>
+      </span>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

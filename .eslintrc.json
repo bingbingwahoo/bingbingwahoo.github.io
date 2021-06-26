@@ -1,0 +1,16 @@
+{
+    "root": true,
+    "extends": "eslint:recommended",
+    "parserOptions": {
+        "ecmaVersion": 8,
+        "sourceType": "script"
+    },
+    "env": {
+        "browser": true,
+        "es2017": true
+    },
+    "rules": {
+        "no-constant-condition": "off",
+        "no-unused-vars": ["error", {"vars": "local"}]
+    }
+}

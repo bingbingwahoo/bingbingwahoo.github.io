@@ -141,7 +141,6 @@ input[type=checkbox][hidden] {
   flex-flow: row nowrap;
   align-items: center;
   justify-content: center;
-  margin: 2em 2em 0em;
   position: relative;
   z-index: 2;
 }
@@ -171,6 +170,18 @@ input[type=checkbox][hidden] {
   text-shadow: 0.075em 0.075em 0.05em #000000;
 }
 
+.header-navigation-links {
+  margin-top: 0.5em;
+}
+.header-navigation-link {
+  text-decoration: underline;
+  color: #2277dd;
+  cursor: pointer;
+}
+.header-navigation-separator::after {
+  content: " | ";
+}
+
 .intro-content {
   width: 100%;
   height: 100%;
@@ -189,6 +200,9 @@ input[type=checkbox][hidden] {
   margin: 0 auto;
   max-width: 87em;
   box-sizing: border-box;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-start;
 }
 .intro-body {
   flex: 1 1 auto;

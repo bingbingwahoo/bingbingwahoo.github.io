@@ -742,7 +742,7 @@ class Main {
   }
 
   _setupData() {
-    const {title, subTitle} = this._data;
+    const {title, subTitle, navigation} = this._data;
     if (typeof title === 'string') {
       document.title = title;
       document.querySelector('#main-title').textContent = title;
@@ -750,6 +750,82 @@ class Main {
     if (typeof subTitle === 'string') {
       document.querySelector('#main-sub-title').textContent = subTitle;
     }
+    if (Array.isArray(navigation)) {
+      this._setupNavigationLinks(navigation);
+    }
+  }
+
+  _setupNavigationLinks(navigationItems) {
+    const container = document.querySelector('.header-navigation-links');
+    if (container === null) { return; }
+
+    const content = document.createDocumentFragment();
+    let count = 0;
+    for (const item of navigationItems) {
+      let url, data, text, cors, compact;
+      try {
+        ({url, data, text, cors, compact} = item);
+      } catch (e) {
+        // Nothing
+      }
+      if (typeof text !== 'string') { continue; }
+
+      if (count > 0) {
+        const separator = document.createElement('span');
+        separator.className = 'header-navigation-separator';
+        content.appendChild(separator);
+      }
+
+      if (typeof url === 'string') {
+        let relative;
+        ({url, relative} = this._getRelativeUrl(url));
+        if (!relative) { url = void 0; }
+      }
+
+      let node;
+      if (typeof data === 'string') {
+        ({url: data} = this._getRelativeUrl(data));
+
+        const params = new URLSearchParams();
+        params.set('data', data);
+        if (typeof cors === 'boolean') { params.set('cors', `${cors}`); }
+        if (typeof compact === 'boolean') { params.set('compact', `${compact}`); }
+        const paramsString = params.toString().replace(/%2F/ig, '/').replace(/%3A/ig, ':');
+        url = `${location.pathname}?${paramsString}`;
+
+        node = document.createElement('a');
+        node.href = url;
+        node.className = 'header-navigation-link';
+      } else if (typeof url === 'string') {
+        node = document.createElement('a');
+        node.href = url;
+        node.className = 'header-navigation-link';
+      } else {
+        node = document.createElement('span');
+        node.className = 'header-navigation-text';
+      }
+
+      node.textContent = text;
+      content.appendChild(node);
+
+      ++count;
+    }
+
+    if (count > 0) {
+      container.textContent = '';
+      container.appendChild(content);
+      container.hidden = false;
+    }
+  }
+
+  _getRelativeUrl(url) {
+    url = new URL(url, this._dataUrl).href;
+    const prefix = `${location.protocol}//${location.host}/`;
+    const relative = url.startsWith(prefix);
+    if (relative) {
+      url = url.substring(prefix.length - 1);
+    }
+    return {url, relative};
   }
 
   _setStateSorting(sequence, comparisons) {

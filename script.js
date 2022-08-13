@@ -1,4 +1,4 @@
-/* global timsort */
+/* global timsort, ImageExporter */
 
 class BitStream {
   constructor(data) {
@@ -691,6 +691,12 @@ class Main {
 
   _onSortComplete({orderedOptions}) {
     this._setPageResults(orderedOptions);
+    try {
+      const imageExporter = new ImageExporter(this, this._data, orderedOptions);
+      imageExporter.prepare();
+    } catch (e) {
+      // Ignore
+    }
   }
 
   _setupOptionInfo(optionInfo, index) {

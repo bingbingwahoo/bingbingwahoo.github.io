@@ -632,6 +632,37 @@ input[type=checkbox][hidden] {
   display: inline;
 }
 
+.results-links {
+  display: flex;
+  flex-flow: row nowrap;
+  padding-bottom: 0.5em;
+  margin-bottom: 0.5em;
+  border-bottom: 0.0625em solid #33333380;
+}
+.results-link-separator {
+  margin: 0 0.25em;
+}
+.results-link-separator.results-link-separator-empty {
+  margin-left: 0;
+}
+.results-link-separator:not(.results-link-separator-empty)::after {
+  content: '|';
+}
+.results-link {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+  transition: opacity 0.125s linear;
+}
+.results-link:hover {
+  text-decoration: underline;
+}
+.results-link[data-disabled=true] {
+  cursor: default;
+  text-decoration: none;
+  opacity: 0.5;
+}
+
 .footer {
   z-index: 4;
   display: block;

@@ -564,6 +564,7 @@ class Main {
     this._setupData();
     imageLoader.load(data, this);
 
+    document.querySelector('#results-copy-link').addEventListener('click', this._onResultsCopyLinkClick.bind(this));
     document.querySelector('#begin-button').addEventListener('click', this._onBeginButtonClick.bind(this));
     document.querySelector('#results-compact').addEventListener('change', this._onResultsCompactChange.bind(this));
     this._updateResultsCompactState();
@@ -667,6 +668,21 @@ class Main {
   _onBeginButtonClick() {
     const sequence = this._sorter.createRandomSequence(this._data.options.length);
     this._navigation.setState(sequence, []);
+  }
+
+  _onResultsCopyLinkClick(e) {
+    e.preventDefault();
+    try {
+      const parent = document.body;
+      const textarea = document.createElement('textarea');
+      textarea.value = e.currentTarget.getAttribute('href');
+      parent.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      parent.removeChild(textarea);
+    } catch (e) {
+      // Ignore
+    }
   }
 
   _onSortCompare({option1, option2, flip}) {
@@ -973,6 +989,7 @@ class Main {
   }
 
   _setPageResults(orderedOptions) {
+    document.querySelector('#results-copy-link').href = location.href;
     document.querySelector('#sorting-info').textContent = `Completed sorting after ${this._sorter.completedComparisonCount} comparisons`;
     document.querySelector('#footer').hidden = false;
     this._setPage('results');

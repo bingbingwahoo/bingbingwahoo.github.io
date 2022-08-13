@@ -100,12 +100,20 @@
   <div class="sub-content results-content" id="results-content" hidden>
     <div class="results-content-before"></div>
     <div class="results-body">
-      <div class="results-list" id="results-list"></div>
-      <div>
+      <div class="results-links">
         <label class="toggle-link">
           <label class="hiding-checkbox"><input type="checkbox" id="results-compact" hidden><span></span></label><span>Compact list</span>
         </label>
+        <span class="results-link-separator"></span>
+        <a class="results-link" tabindex="0" id="results-copy-link">Copy link</a>
+        <span class="results-link-separator"></span>
+        <span>Download image:</span>
+        <span class="results-link-separator results-link-separator-empty"></span>
+        <a class="results-link" tabindex="0" data-ation="download-image" data-disabled="true" data-type="image/png" data-quality="1">PNG</a>
+        <span class="results-link-separator"></span>
+        <a class="results-link" tabindex="0" data-ation="download-image" data-disabled="true" data-type="image/jpeg" data-quality="0.9">JPEG</a>
       </div>
+      <div class="results-list" id="results-list"></div>
     </div>
     <div class="results-content-after"></div>
   </div>
